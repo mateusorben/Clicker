@@ -25,8 +25,6 @@
         </div>
     </div>
 
-
-
     <div class="melhorias">
         <div class="subMelhorias">
             <button onclick="dobraClique()">Dobra seu clique $<span id="custoDobraClique">100</span></button>
@@ -42,25 +40,35 @@
         
         <div class="container-ajudas">
             <button onclick="adicionaCursorAutomatico()">
-                Cria um cursor $<span id="custoCursorAutomatico">50</span> <span id="countCursorAutomatico">0</span> 
+                Cria um cursor $<span id="custoCursorAutomatico">50</span> 
+                <span id="countCursorAutomatico">0</span> 
+                <span class="info">i</span>
+                <div id="tooltip" class="tooltip">Cursor que vai clicar no botão para você, </br> o cursor clica a cada 10s</div>
             </button>
-            <div id="tooltip" class="">Cursor que vai clicar no botÃ£o para vocÃª, o cursor clica a cada 10s</div>
+            
             
             <button onclick="adcionaMouse()">   
-                Um mouse comum $<span id="custoMaisUmMouse">150</span> <span id="countMaisUmMouse">0</span>
+                Um mouse comum $<span id="custoMaisUmMouse">150</span> <span id="countMaisUmMouse">0</span> <span class="info">i</span> 
             </button>
+            <div id="tooltip" class="tooltip">
+                <p>Esse mouse adiciona 1 click por segundo</p>
+                <p>1 mouse adicionando 1 clicks por segundo</p>
+            </div>
     
             <button onclick="adcionaMouseGamer()">
-                Um mouse gamer $<span id="custoMaisUmMouseGamer">500</span> <span id="countMaisUmMouseGamer">0</span>
+                Um mouse gamer $<span id="custoMaisUmMouseGamer">500</span> <span id="countMaisUmMouseGamer">0</span> <span class="info">i</span> 
             </button>
+            <div id="tooltip" class="tooltip">Esse mouse adiciona 5 clicks por segundo</div>
     
             <button onclick="adcionaAutoClick()">
-                Programa de AutoClick $<span id="custoAutoClick">10000</span> <span id="countAutoClick">0</span>
+                Programa de AutoClick $<span id="custoAutoClick">10000</span> <span id="countAutoClick">0</span> <span class="info">i</span> 
             </button>
+            <div id="tooltip" class="tooltip">Esse programa de autoclick adiciona 50 clicks por segundo</div>
 
             <button onclick="adicionaFabrica()">
-                Fabrica de mouses $<span id="custoFabrica">150000</span> <span id="countFabricas">0</span>
+                Fabrica de mouses $<span id="custoFabrica">150000</span> <span id="countFabricas">0</span> <span class="info">i</span> 
             </button>
+            <div id="tooltip" class="tooltip">Essa fábrica adiciona 200 clicks por segundo</div>
         </div>
     </div>
 </body>
