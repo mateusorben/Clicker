@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click</title>
+    <script src="scripts.js" defer></script>
+    <script src="ajudantes/cursor/cursor.js " defer></script>
+    <script src="ajudantes/mouseComum/mouseComum.js " defer></script>
+    <script src="ajudantes/mouseGamer/mouseGamer.js " defer></script>
+    <script src="ajudantes/autoClick/autoCkick.js " defer></script>
+    <script src="ajudantes/fabricas/fabricas.js " defer></script>
+    <script src="constantes.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ajudantes/cursor/cursor.css">
+    <link rel="stylesheet" href="ajudantes/mouseComum/mouseComum.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="cliques">0</h2>
+
+        <button id="buttonClique">Clique aqui</button>
+        <div id="effectContainer"></div>
+        <div class="container-cursores">
+        </div>
+    </div>
+
+
+
+    <div class="melhorias">
+        <div class="subMelhorias">
+            <button onclick="dobraClique()">Dobra seu clique $<span id="custoDobraClique">100</span></button>
+
+            <button onclick="dobraEficienciaMouseComum()" class="btnDobraEficienciaMouseComum">
+                Dobra a eficiencia do mouse comum $<span id="custoDobraEficienciaMouseComum">5000</span>
+            </button>
+
+            <button onclick="dobraEficienciaMouseGamer()">
+                Dobra a eficiencia do mouse gamer $<span id="custoDobraEficienciaMouseGamer">10000</span>
+            </button>
+        </div>
+        
+        <div class="container-ajudas">
+            <button onclick="adicionaCursorAutomatico()">
+                Cria um cursor $<span id="custoCursorAutomatico">50</span> <span id="countCursorAutomatico">0</span> 
+            </button>
+            <div id="tooltip" class="">Cursor que vai clicar no botão para você, o cursor clica a cada 10s</div>
+            
+            <button onclick="adcionaMouse()">   
+                Um mouse comum $<span id="custoMaisUmMouse">150</span> <span id="countMaisUmMouse">0</span>
+            </button>
+    
+            <button onclick="adcionaMouseGamer()">
+                Um mouse gamer $<span id="custoMaisUmMouseGamer">500</span> <span id="countMaisUmMouseGamer">0</span>
+            </button>
+    
+            <button onclick="adcionaAutoClick()">
+                Programa de AutoClick $<span id="custoAutoClick">10000</span> <span id="countAutoClick">0</span>
+            </button>
+
+            <button onclick="adicionaFabrica()">
+                Fabrica de mouses $<span id="custoFabrica">150000</span> <span id="countFabricas">0</span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

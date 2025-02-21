@@ -1,0 +1,10 @@
+  .container-cursores {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.cursor {
+    top: 10px;
+    transition: transform 0.2s ease-in-out;
+}
