@@ -1,16 +1,16 @@
 let incremento = 1;
 let custoDobraClique = 100;
+var cliques = {
+    cliquesTotais : 0
+};
 
 function clicou(melhoria, incrementoMelhoria) {
-    let cliques = document.getElementById('cliques').textContent;
+    let totalCliques = cliques.cliquesTotais;
 
-    if (melhoria) {
-        cliques = parseInt(cliques) + incrementoMelhoria;
-    } else {
-        cliques = parseInt(cliques) + incremento;
-    }
+    totalCliques = totalCliques +  melhoria ? incrementoMelhoria : incremento;
 
-    document.getElementById('cliques').textContent = cliques;
+    cliques.cliquesTotais = totalCliques;
+    document.getElementById('cliques').textContent = nomeiaValoresGrandes(totalCliques);
 }
 
 const button = document.getElementById('buttonClique');
@@ -44,4 +44,20 @@ function dobraClique() {
         document.getElementById('custoDobraClique').textContent = custoDobraClique * 5;
         custoDobraClique = custoDobraClique * 5;
     }    
+}
+
+function nomeiaValoresGrandes(valor) {
+    let valorSeparado = valor.toString().split("").map(Number);
+
+    if (valorSeparado.length >= 7 && valorSeparado.length <= 9) {
+        if (valorSeparado.length == 7) {
+            return valorSeparado[0] + "." + valorSeparado[1] + valorSeparado[2] + valorSeparado[3] + " Milhão";
+        } else if (valorSeparado.length == 8) {
+            return valorSeparado[0] + valorSeparado[1] + "." + valorSeparado[2] + valorSeparado[3] +  valorSeparado[4] + " Milhões";
+        } else {
+            return valorSeparado[0] + valorSeparado[1] + valorSeparado[2] + "." + valorSeparado[3] +  valorSeparado[4] + valorSeparado[5] + " Milhões";
+        }
+    }
+
+    return valor;
 }
