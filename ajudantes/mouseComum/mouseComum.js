@@ -16,7 +16,6 @@ function adcionaMouse() {
 
         setInterval(() => {
             clicou(true, valorClickMouseComum);
-            console.log('valor do click = ' + valorClickMouseComum)
         }, 1000);
     } 
 }
@@ -29,7 +28,7 @@ function verificaMelhoriaDobrarEficienciaMouseComum() {
     let count = parseInt(document.getElementById('countMaisUmMouse').textContent);
     if (count >= 10 && countCompradaDobraEficienciaMouseComum == 0) {
         document.querySelector('.btnDobraEficienciaMouseComum').style.display = 'block';
-    } else if (count >= 50 && countCompradaDobraEficienciaMouseComum == 1) {
+    } else if (count >= 30 && countCompradaDobraEficienciaMouseComum == 1) {
         console.log('Dobrou pela segunda vez')
         document.querySelector('.btnDobraEficienciaMouseComum').style.display = 'block';
     }

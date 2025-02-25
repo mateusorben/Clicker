@@ -3,11 +3,20 @@ let custoDobraClique = 100;
 var cliques = {
     cliquesTotais : 0
 };
+let countClicksTotais = 0;
 
 function clicou(melhoria, incrementoMelhoria) {
     let totalCliques = cliques.cliquesTotais;
 
     totalCliques = totalCliques +  melhoria ? incrementoMelhoria : incremento;
+    if (melhoria) {
+        cliques = parseInt(cliques) + incrementoMelhoria;
+        countClicksTotais += incrementoMelhoria;
+    } else {
+        cliques = parseInt(cliques) + incremento;
+        countClicksTotais += incremento; 
+        verificaMelhoriaDobraClick();
+    }
 
     cliques.cliquesTotais = totalCliques;
     document.getElementById('cliques').textContent = nomeiaValoresGrandes(totalCliques);
@@ -51,13 +60,19 @@ function nomeiaValoresGrandes(valor) {
 
     if (valorSeparado.length >= 7 && valorSeparado.length <= 9) {
         if (valorSeparado.length == 7) {
-            return valorSeparado[0] + "." + valorSeparado[1] + valorSeparado[2] + valorSeparado[3] + " Milhão";
+            return valorSeparado[0] + "." + valorSeparado[1] + valorSeparado[2] + valorSeparado[3] + " Milhï¿½o";
         } else if (valorSeparado.length == 8) {
-            return valorSeparado[0] + valorSeparado[1] + "." + valorSeparado[2] + valorSeparado[3] +  valorSeparado[4] + " Milhões";
+            return valorSeparado[0] + valorSeparado[1] + "." + valorSeparado[2] + valorSeparado[3] +  valorSeparado[4] + " Milhï¿½es";
         } else {
-            return valorSeparado[0] + valorSeparado[1] + valorSeparado[2] + "." + valorSeparado[3] +  valorSeparado[4] + valorSeparado[5] + " Milhões";
+            return valorSeparado[0] + valorSeparado[1] + valorSeparado[2] + "." + valorSeparado[3] +  valorSeparado[4] + valorSeparado[5] + " Milhï¿½es";
         }
     }
 
     return valor;
+}
+
+function verificaMelhoriaDobraClick() {
+    if (countClicksTotais >= 10) {
+        document.querySelector('.btnDobraEficienciaClick').style.display = 'block';
+    }
 }

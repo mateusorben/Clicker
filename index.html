@@ -10,14 +10,19 @@
     <script src="ajudantes/mouseGamer/mouseGamer.js " defer></script>
     <script src="ajudantes/autoClick/autoCkick.js " defer></script>
     <script src="ajudantes/fabricas/fabricas.js " defer></script>
+    <script src="ajudantes/inteligenciaArtificial/inteligenciaArtificial.js " defer></script>
     <script src="constantes.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="ajudantes/cursor/cursor.css">
     <link rel="stylesheet" href="ajudantes/mouseComum/mouseComum.css">
+    <link rel="stylesheet" href="ajudantes/mouseGamer/mouseGamer.css">
+    <link rel="stylesheet" href="ajudantes/autoClick/autoCkick.css">
+    <link rel="stylesheet" href="ajudantes/fabricas/fabrica.css">
+    <link rel="stylesheet" href="ajudantes/inteligenciaArtificial/inteligenciaAtificial.css">
 </head>
 <body>
     <div class="container">
-        <h2 id="cliques">0</h2>
+        <h2 id="cliques">1000000000</h2>
 
         <button id="buttonClique">Clique aqui</button>
         <div id="effectContainer"></div>
@@ -27,14 +32,32 @@
 
     <div class="melhorias">
         <div class="subMelhorias">
-            <button onclick="dobraClique()">Dobra seu clique $<span id="custoDobraClique">100</span></button>
+            <button onclick="dobraClique()" class="btnDobraEficienciaClick">
+                Dobra seu clique $<span id="custoDobraClique">100</span>
+            </button>
+
+            <button onclick="diminuiTempoCursor()" class="btnDiminuiTempoCursor">
+                Cursores clicam a cada 5s $<span id="custoDiminuiTempoCursor">555</span>
+            </button>
 
             <button onclick="dobraEficienciaMouseComum()" class="btnDobraEficienciaMouseComum">
                 Dobra a eficiencia do mouse comum $<span id="custoDobraEficienciaMouseComum">5000</span>
             </button>
 
-            <button onclick="dobraEficienciaMouseGamer()">
+            <button onclick="dobraEficienciaMouseGamer()"  class="btnDobraEficienciaMouseGamer">
                 Dobra a eficiencia do mouse gamer $<span id="custoDobraEficienciaMouseGamer">10000</span>
+            </button>
+
+            <button onclick="dobraEficienciaAutoClick()"  class="btnDobraEficienciaAutoClick">
+                Dobra a eficiencia do Auto Click $<span id="custoDobraEficienciaAutoClick">25000</span>
+            </button>
+
+            <button onclick="dobraEficienciaFabrica()"  class="btnDobraEficienciaFabrica">
+                Dobra a eficiencia das FÃ¡bricas $<span id="custoDobraEficienciaFabrica">50000</span>
+            </button>
+
+            <button onclick="dobraEficienciaIA()"  class="btnDobraEficienciaIA">
+                Dobra a eficiencia da IA $<span id="custoDobraEficienciaIA">500000</span>
             </button>
         </div>
         
@@ -43,32 +66,51 @@
                 Cria um cursor $<span id="custoCursorAutomatico">50</span> 
                 <span id="countCursorAutomatico">0</span> 
                 <span class="info">i</span>
-                <div id="tooltip" class="tooltip">Cursor que vai clicar no botão para você, </br> o cursor clica a cada 10s</div>
+                <div id="tooltip" class="tooltip">Cursor que vai clicar no botÃ£o para vocÃª, </br> o cursor clica a cada 10s</div>
             </button>
             
             
             <button onclick="adcionaMouse()">   
-                Um mouse comum $<span id="custoMaisUmMouse">150</span> <span id="countMaisUmMouse">0</span> <span class="info">i</span> 
+                Um mouse comum $<span id="custoMaisUmMouse">150</span> 
+                <span id="countMaisUmMouse">0</span> 
+                <span class="info">i</span>
+                <div id="tooltip" class="tooltip">
+                    <p>Esse mouse adiciona 1 click por segundo</p>
+                    <p>1 mouse adicionando 1 clicks por segundo</p>
+                </div> 
             </button>
-            <div id="tooltip" class="tooltip">
-                <p>Esse mouse adiciona 1 click por segundo</p>
-                <p>1 mouse adicionando 1 clicks por segundo</p>
-            </div>
     
             <button onclick="adcionaMouseGamer()">
-                Um mouse gamer $<span id="custoMaisUmMouseGamer">500</span> <span id="countMaisUmMouseGamer">0</span> <span class="info">i</span> 
+                Um mouse gamer $<span id="custoMaisUmMouseGamer">500</span> 
+                <span id="countMaisUmMouseGamer">0</span> 
+                <span class="info">i</span> 
+                <div id="tooltip" class="tooltip">
+                    <p>Esse mouse adiciona 5 clicks por segundo</p> 
+                </div>
             </button>
-            <div id="tooltip" class="tooltip">Esse mouse adiciona 5 clicks por segundo</div>
     
             <button onclick="adcionaAutoClick()">
-                Programa de AutoClick $<span id="custoAutoClick">10000</span> <span id="countAutoClick">0</span> <span class="info">i</span> 
+                Programa de AutoClick $<span id="custoAutoClick">10000</span> 
+                <span id="countAutoClick">0</span> 
+                <span class="info">i</span> 
+                <div id="tooltip" class="tooltip">
+                    <p>Esse programa de autoclick adiciona 50 clicks por segundo</p> 
+                </div>
             </button>
-            <div id="tooltip" class="tooltip">Esse programa de autoclick adiciona 50 clicks por segundo</div>
 
             <button onclick="adicionaFabrica()">
-                Fabrica de mouses $<span id="custoFabrica">150000</span> <span id="countFabricas">0</span> <span class="info">i</span> 
+                Fabrica de mouses $<span id="custoFabrica">150000</span> 
+                <span id="countFabricas">0</span> 
+                <span class="info">i</span> 
+                <div id="tooltip" class="tooltip">Essa fÃ¡brica adiciona 200 clicks por segundo</div>
             </button>
-            <div id="tooltip" class="tooltip">Essa fábrica adiciona 200 clicks por segundo</div>
+
+            <button onclick="adicionaIA()">
+                Inteligencia Artificial $<span id="custoIA">1000000</span> 
+                <span id="countIA">0</span> 
+                <span class="info">i</span> 
+                <div id="tooltip" class="tooltip">Essa IA adiciona 1000 clicks por segundo</div>
+            </button>
         </div>
     </div>
 </body>

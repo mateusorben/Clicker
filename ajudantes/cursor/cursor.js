@@ -1,6 +1,10 @@
 let custoCursorAutomatico = 50;
 let cursorIdCounter = 0;
 let countCursorAutomatico = 0;
+let diminuirTempoCursor = false;
+let custoDiminuiTempoCursor = 555;
+let intervalos = {};
+let countCompradoDiminuiTempoCursor = 0;
 
 function adicionaCursorAutomatico() {
     let cliques = parseInt(document.getElementById('cliques').textContent);
@@ -10,7 +14,8 @@ function adicionaCursorAutomatico() {
         document.getElementById('custoCursorAutomatico').textContent = Math.round(custoCursorAutomatico * PORCENTAGEM_CUSTO);
         custoCursorAutomatico = Math.round(custoCursorAutomatico * PORCENTAGEM_CUSTO);
         adicionaCursorNaTela();
-        aumentaContadorCompradosCursor(); 
+        aumentaContadorCompradosCursor();
+        verificaMelhoriaDimuiTempoCursor(); 
     }    
 }
 
@@ -26,10 +31,12 @@ function adicionaCursorNaTela() {
 }
 
 function iniciarMovimentoCursor(cursorId) {
-    setInterval(() => {
+    if (intervalos[cursorId]) clearInterval(intervalos[cursorId]);
+
+    intervalos[cursorId] = setInterval(() => {
         movimentacaoCursor(cursorId);
         clicou(false, 1);
-    }, 10000);
+    }, diminuirTempoCursor ? 5000 : 10000);
 }
 
 function movimentacaoCursor(cursorId) {
@@ -45,4 +52,27 @@ function movimentacaoCursor(cursorId) {
 
 function aumentaContadorCompradosCursor() {
     document.getElementById('countCursorAutomatico').textContent = ++countCursorAutomatico;
+}
+
+function verificaMelhoriaDimuiTempoCursor() {
+    let count = parseInt(document.getElementById('countCursorAutomatico').textContent)
+
+    if (count >= 10 && countCompradoDiminuiTempoCursor == 0) {
+        document.querySelector('.btnDiminuiTempoCursor').style.display = 'block';
+    }
+}
+
+function diminuiTempoCursor() {
+    let cliques = parseInt(document.getElementById('cliques').textContent);
+
+    if (cliques >= custoDiminuiTempoCursor) {
+        document.getElementById('cliques').textContent = cliques - custoDiminuiTempoCursor;
+        document.querySelector('.btnDiminuiTempoCursor').style.display = 'none';
+        diminuirTempoCursor = true;
+        countCompradoDiminuiTempoCursor++
+
+        for (let cursorId in intervalos) {
+            iniciarMovimentoCursor(cursorId);
+        }
+    }
 }
