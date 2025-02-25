@@ -22,7 +22,7 @@
 </head>
 <body>
     <div class="container">
-        <h2 id="cliques">1000000000</h2>
+        <h2 id="cliques">0</h2>
 
         <button id="buttonClique">Clique aqui</button>
         <div id="effectContainer"></div>
@@ -34,10 +34,6 @@
         <div class="subMelhorias">
             <button onclick="dobraClique()" class="btnDobraEficienciaClick">
                 Dobra seu clique $<span id="custoDobraClique">100</span>
-            </button>
-
-            <button onclick="diminuiTempoCursor()" class="btnDiminuiTempoCursor">
-                Cursores clicam a cada 5s $<span id="custoDiminuiTempoCursor">555</span>
             </button>
 
             <button onclick="dobraEficienciaMouseComum()" class="btnDobraEficienciaMouseComum">
@@ -63,7 +59,7 @@
         
         <div class="container-ajudas">
             <button onclick="adicionaCursorAutomatico()">
-                Cria um cursor $<span id="custoCursorAutomatico">50</span> 
+                Cria um cursor $<span id="custoCursorAutomatico">25</span> 
                 <span id="countCursorAutomatico">0</span> 
                 <span class="info">i</span>
                 <div id="tooltip" class="tooltip">Cursor que vai clicar no botão para você, </br> o cursor clica a cada 10s</div>
@@ -72,11 +68,11 @@
             
             <button onclick="adcionaMouse()">   
                 Um mouse comum $<span id="custoMaisUmMouse">150</span> 
-                <span id="countMaisUmMouse">0</span> 
+                <span class="countMaisUmMouse">0</span> 
                 <span class="info">i</span>
                 <div id="tooltip" class="tooltip">
                     <p>Esse mouse adiciona 1 click por segundo</p>
-                    <p>1 mouse adicionando 1 clicks por segundo</p>
+                    <p><span class="countMaisUmMouse">0</span> mouse adicionando 1 clicks por segundo</p>
                 </div> 
             </button>
     

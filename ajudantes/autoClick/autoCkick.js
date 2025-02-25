@@ -5,10 +5,9 @@ let valorClickAutoClick = 50;
 let countCompradaDobraEficienciaAutoClick = 0;
 
 function adcionaAutoClick() {
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoAutoClick) {
-        document.getElementById('cliques').textContent = cliques - custoAutoClick;
+    if (cliques.cliquesSaldo >= custoAutoClick) {
+        document.getElementById('cliques').textContent = cliques.cliquesSaldo - custoAutoClick;
+        cliques.cliquesSaldo -= custoAutoClick
         document.getElementById('custoAutoClick').textContent = Math.round(custoAutoClick * PORCENTAGEM_CUSTO);
         custoAutoClick = Math.round(custoAutoClick * PORCENTAGEM_CUSTO);
         aumentaContadorCompradosAutoClick(); 
@@ -34,11 +33,10 @@ function verificaMelhoriaDobrarEficienciaAutoClick() {
 }
 
 function dobraEficienciaAutoClick() {
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoDobraEficienciaAutoClick) {
+    if (cliques.cliquesSaldo >= custoDobraEficienciaAutoClick) {
         valorClickAutoClick = valorClickAutoClick * 2;
-        document.getElementById('cliques').textContent = cliques - custoDobraEficienciaAutoClick;
+        document.getElementById('cliques').textContent = cliques.cliquesSaldo - custoDobraEficienciaAutoClick;
+        cliques.cliquesSaldo -= custoDobraEficienciaAutoClick;
         document.getElementById('custoDobraEficienciaAutoClick').textContent = Math.round(custoDobraEficienciaAutoClick * 5);
         custoDobraEficienciaAutoClick = Math.round(custoDobraEficienciaAutoClick * 5);
         document.querySelector('.btnDobraEficienciaAutoClick').style.display = 'none';

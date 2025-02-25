@@ -5,10 +5,9 @@ let valorClickMouseGamer = 5;
 let countCompradaDobraEficienciaMouseGamer = 0;
 
 function adcionaMouseGamer() {
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoMaisUmMouseGamer) {
-        document.getElementById('cliques').textContent = cliques - custoMaisUmMouseGamer;
+    if (cliques.cliquesSaldo >= custoMaisUmMouseGamer) {
+        document.getElementById('cliques').textContent = cliques.cliquesSaldo - custoMaisUmMouseGamer;
+        cliques.cliquesSaldo -= custoMaisUmMouseGamer;
         document.getElementById('custoMaisUmMouseGamer').textContent = Math.round(custoMaisUmMouseGamer * PORCENTAGEM_CUSTO);
         custoMaisUmMouseGamer = Math.round(custoMaisUmMouseGamer * PORCENTAGEM_CUSTO);
         aumentaContadorCompradosMouseGamer(); 
@@ -34,11 +33,10 @@ function verificaMelhoriaDobrarEficienciaMouseGamer() {
 }
 
 function dobraEficienciaMouseGamer() {
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoDobraEficienciaMouseGamer) {
+    if (cliques.cliquesSaldo >= custoDobraEficienciaMouseGamer) {
         valorClickMouseGamer = valorClickMouseGamer * 2;
-        document.getElementById('cliques').textContent = cliques - custoDobraEficienciaMouseGamer;
+        document.getElementById('cliques').textContent = cliques.cliquesSaldo - custoDobraEficienciaMouseGamer;
+        cliques.cliquesSaldo -= custoDobraEficienciaMouseGamer;
         document.getElementById('custoDobraEficienciaMouseGamer').textContent = Math.round(custoDobraEficienciaMouseGamer * 5);
         custoDobraEficienciaMouseGamer = Math.round(custoDobraEficienciaMouseGamer * 5);
         document.querySelector('.btnDobraEficienciaMouseGamer').style.display = 'none';

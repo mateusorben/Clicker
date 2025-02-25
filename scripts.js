@@ -1,24 +1,23 @@
 let incremento = 1;
 let custoDobraClique = 100;
 var cliques = {
-    cliquesTotais : 0
+    cliquesTotais : 0,
+    cliquesSaldo : 0
 };
-let countClicksTotais = 0;
 
 function clicou(melhoria, incrementoMelhoria) {
-    let totalCliques = cliques.cliquesTotais;
+    let totalCliques = cliques.cliquesSaldo;
 
-    totalCliques = totalCliques +  melhoria ? incrementoMelhoria : incremento;
     if (melhoria) {
-        cliques = parseInt(cliques) + incrementoMelhoria;
-        countClicksTotais += incrementoMelhoria;
+        totalCliques = totalCliques + incrementoMelhoria;
+        cliques.cliquesTotais += incrementoMelhoria;
     } else {
-        cliques = parseInt(cliques) + incremento;
-        countClicksTotais += incremento; 
+        totalCliques = totalCliques + incremento;
+        cliques.cliquesTotais += incremento; 
         verificaMelhoriaDobraClick();
     }
 
-    cliques.cliquesTotais = totalCliques;
+    cliques.cliquesSaldo = totalCliques;
     document.getElementById('cliques').textContent = nomeiaValoresGrandes(totalCliques);
 }
 
@@ -44,13 +43,12 @@ button.addEventListener('click', () => {
 });
 
 function dobraClique() {
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoDobraClique) {
+    if (cliques.cliquesSaldo >= custoDobraClique) {
         incremento *= 2;
 
-        document.getElementById('cliques').textContent = cliques - custoDobraClique;
-        document.getElementById('custoDobraClique').textContent = custoDobraClique * 5;
+        document.getElementById('cliques').textContent = nomeiaValoresGrandes(cliques.cliquesSaldo - custoDobraClique);
+        cliques.cliquesSaldo -= custoDobraClique;
+        document.getElementById('custoDobraClique').textContent = nomeiaValoresGrandes(custoDobraClique * 5);
         custoDobraClique = custoDobraClique * 5;
     }    
 }
@@ -60,11 +58,19 @@ function nomeiaValoresGrandes(valor) {
 
     if (valorSeparado.length >= 7 && valorSeparado.length <= 9) {
         if (valorSeparado.length == 7) {
-            return valorSeparado[0] + "." + valorSeparado[1] + valorSeparado[2] + valorSeparado[3] + " Milh�o";
+            return valorSeparado[0] + "." + valorSeparado[1] + "" + valorSeparado[2] + "" + valorSeparado[3] + " Milhões";
         } else if (valorSeparado.length == 8) {
-            return valorSeparado[0] + valorSeparado[1] + "." + valorSeparado[2] + valorSeparado[3] +  valorSeparado[4] + " Milh�es";
+            return valorSeparado[0] + "" + valorSeparado[1] + "." + valorSeparado[2] + "" + valorSeparado[3] + "" + valorSeparado[4] + " Milhões";
         } else {
-            return valorSeparado[0] + valorSeparado[1] + valorSeparado[2] + "." + valorSeparado[3] +  valorSeparado[4] + valorSeparado[5] + " Milh�es";
+            return valorSeparado[0] + "" + valorSeparado[1] + "" + valorSeparado[2] + "." + valorSeparado[3] + "" + valorSeparado[4] + "" + valorSeparado[5] + " Milhões";
+        }
+    } else if (valorSeparado.length >= 10 && valorSeparado.length <= 12) {
+        if (valorSeparado.length == 10) {
+            return valorSeparado[0] + "." + valorSeparado[1] + "" + valorSeparado[2] + "" + valorSeparado[3] + " Bilhões";
+        } else if (valorSeparado.length == 11) {
+            return valorSeparado[0] + "" + valorSeparado[1] + "." + valorSeparado[2] + "" + valorSeparado[3] + "" + valorSeparado[4] + " Bilhões";
+        } else {
+            return valorSeparado[0] + "" + valorSeparado[1] + "" + valorSeparado[2] + "." + valorSeparado[3] + "" + valorSeparado[4] + "" + valorSeparado[5] + " Bilhões";
         }
     }
 
@@ -72,7 +78,7 @@ function nomeiaValoresGrandes(valor) {
 }
 
 function verificaMelhoriaDobraClick() {
-    if (countClicksTotais >= 10) {
+    if (cliques.cliquesTotais >= 10) {
         document.querySelector('.btnDobraEficienciaClick').style.display = 'block';
     }
 }

@@ -5,11 +5,9 @@ let valorClickFabricas = 200;
 let countCompradaDobraEficienciaFabricas = 0;
 
 function adicionaFabrica() {
-    console.log("chamou")
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoFrabrica) {
-        document.getElementById('cliques').textContent = cliques - custoFrabrica;
+    if (cliques.cliquesSaldo >= custoFrabrica) {
+        document.getElementById('cliques').textContent = cliques.cliquesSaldo - custoFrabrica;
+        cliques.cliquesSaldo -= custoFrabrica;
         document.getElementById('custoFabrica').textContent = Math.round(custoFrabrica * PORCENTAGEM_CUSTO);
         custoFrabrica = Math.round(custoFrabrica * PORCENTAGEM_CUSTO);
         aumentaContadorCompradosFabricas();
@@ -35,11 +33,10 @@ function verificaMelhoriaDobrarEficienciaFabricas() {
 }
 
 function dobraEficienciaFabrica() {
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoDobraEficienciaFabricas) {
+    if (cliques.cliquesSaldo >= custoDobraEficienciaFabricas) {
         valorClickFabricas = valorClickFabricas * 2;
-        document.getElementById('cliques').textContent = cliques - custoDobraEficienciaFabricas;
+        document.getElementById('cliques').textContent = cliques.cliquesSaldo - custoDobraEficienciaFabricas;
+        cliques.cliquesSaldo -= custoDobraEficienciaFabricas;
         document.getElementById('custoDobraEficienciaFabrica').textContent = Math.round(custoDobraEficienciaFabricas * 5);
         custoDobraEficienciaFabricas = Math.round(custoDobraEficienciaFabricas * 5);
         document.querySelector('.btnDobraEficienciaFabrica').style.display = 'none';

@@ -5,10 +5,9 @@ let valorClickIA = 1000;
 let countCompradaDobraEficienciaIA = 0;
 
 function adicionaIA() {
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoIA) {
-        document.getElementById('cliques').textContent = cliques - custoIA;
+    if (cliques.cliquesSaldo >= custoIA) {
+        document.getElementById('cliques').textContent = cliques.cliquesSaldo - custoIA;
+        cliques.cliquesSaldo -= custoIA;
         document.getElementById('custoIA').textContent = Math.round(custoIA * PORCENTAGEM_CUSTO);
         custoIA = Math.round(custoIA * PORCENTAGEM_CUSTO);
         aumentaContadorCompradosIA();
@@ -34,11 +33,10 @@ function verificaMelhoriaDobrarEficienciaIA() {
 }
 
 function dobraEficienciaIA() {
-    let cliques = parseInt(document.getElementById('cliques').textContent);
-
-    if (cliques >= custoDobraEficienciaIA) {
+    if (cliques.cliquesSaldo >= custoDobraEficienciaIA) {
         valorClickIA = valorClickIA * 2;
-        document.getElementById('cliques').textContent = cliques - custoDobraEficienciaIA;
+        document.getElementById('cliques').textContent = cliques.cliquesSaldo - custoDobraEficienciaIA;
+        cliques.cliquesSaldo -= custoDobraEficienciaIA;
         document.getElementById('custoDobraEficienciaIA').textContent = Math.round(custoDobraEficienciaIA * 5);
         custoDobraEficienciaIA = Math.round(custoDobraEficienciaIA * 5);
         document.querySelector('.btnDobraEficienciaIA').style.display = 'none';
